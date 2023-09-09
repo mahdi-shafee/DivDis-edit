@@ -118,9 +118,8 @@ class CUBDataset(ConfounderDataset):
                 x = img
                 self.features_mat.append(x)
             
-            mioo = [x.unsqueeze(0) for x in self.features_mat]
             self.features_mat = torch.cat(
-                mioo[:5000], dim=0
+                [x.unsqueeze(0) for x in self.features_mat], dim=0
             )
             print('miaw')
             print(self.features_mat.shape)
