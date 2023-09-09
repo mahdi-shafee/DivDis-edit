@@ -40,7 +40,7 @@ class CUBDataset(ConfounderDataset):
         self.data_dir = os.path.join(
             self.root_dir, "data", "_".join([self.target_name] + self.confounder_names)
         )
-        self.data_dir = '/content/gdrive/MyDrive/waterbird_complete95_forest2water2'
+        self.data_dir = '/content/DivDis-edit/subpopulation/content/Spurious_OOD/datasets/waterbird_complete90_forest2water2'
 
         if not os.path.exists(self.data_dir) and not os.path.exists(
             os.path.join(root_dir, "features", "cub.npy")
@@ -117,10 +117,12 @@ class CUBDataset(ConfounderDataset):
                     img = img.view(-1)
                 x = img
                 self.features_mat.append(x)
-
+            
+            mioo = [x.unsqueeze(0) for x in self.features_mat]
             self.features_mat = torch.cat(
-                [x.unsqueeze(0) for x in self.features_mat], dim=0
+                mioo[:2000], dim=0
             )
+            print('miaw')
             os.makedirs(os.path.join(root_dir, "features"))
             np.save(
                 os.path.join(root_dir, "features", "cub.npy"), self.features_mat.numpy()
