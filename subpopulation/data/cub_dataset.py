@@ -120,9 +120,11 @@ class CUBDataset(ConfounderDataset):
             
             mioo = [x.unsqueeze(0) for x in self.features_mat]
             self.features_mat = torch.cat(
-                mioo[:2000], dim=0
+                mioo[:3000], dim=0
             )
             print('miaw')
+            print(self.features_mat.shape)
+            print(1/0)
             os.makedirs(os.path.join(root_dir, "features"))
             np.save(
                 os.path.join(root_dir, "features", "cub.npy"), self.features_mat.numpy()
