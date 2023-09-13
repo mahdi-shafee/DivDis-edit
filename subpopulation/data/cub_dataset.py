@@ -123,7 +123,6 @@ class CUBDataset(ConfounderDataset):
             )
             print('miaw')
             print(self.features_mat.shape)
-            print(1/0)
             os.makedirs(os.path.join(root_dir, "features"))
             np.save(
                 os.path.join(root_dir, "features", "cub.npy"), self.features_mat.numpy()
