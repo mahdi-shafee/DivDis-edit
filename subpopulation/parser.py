@@ -160,7 +160,6 @@ def get_args():
         args.model = "resnet50"
         args.n_epochs = args.n_epochs
         args.gamma = 0.1
-        args.train_from_scratch = True
     elif args.setting == "MultiNLI":
         args.shift_type = "confounder"
         args.dataset = "MultiNLI"
